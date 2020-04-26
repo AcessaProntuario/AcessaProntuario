@@ -3,8 +3,17 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { HomeAdmPage } from '../pages/home-adm/home-adm';
+import { LoginPage } from '../pages/login/login';
+import { CadastroMedicoPage } from '../pages/cadastro-medico/cadastro-medico';
+import { CadastroRecepPage } from '../pages/cadastro-recep/cadastro-recep';
+import { CadastroUsuarioPage } from '../pages/cadastro-usuario/cadastro-usuario';
+import { DetalheInformePage } from '../pages/detalhe-informe/detalhe-informe';
+import { HomeMedicoPage } from '../pages/home-medico/home-medico';
+import { HomeRecepPage } from '../pages/home-recep/home-recep';
+import { HomeUserPage } from '../pages/home-user/home-user';
+import { CadastroInformePage } from '../pages/cadastro-informe/cadastro-informe';
+import { RedefinirSenhaPage } from '../pages/redefinir-senha/redefinir-senha';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +21,7 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -21,8 +30,17 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Login',                     component: LoginPage            },
+      { title: 'Cadastro de Médico',        component: CadastroMedicoPage   },
+      { title: 'Cadastro de Recepcionista', component: CadastroRecepPage    },
+      { title: 'Cadastro de Usuário',       component: CadastroUsuarioPage  },
+      { title: 'HomeMedico',                component: HomeMedicoPage       },
+      { title: 'HomeAdm',                   component: HomeAdmPage          },
+      { title: 'HomeRecepcionista',         component: HomeRecepPage        },
+      { title: 'HomeUser',                  component: HomeUserPage         },
+      { title: 'Cadastro de Informe',       component: CadastroInformePage  },
+      { title: 'Detalhe do Informe',        component: DetalheInformePage   },
+      { title: 'Redefinir Senha',           component: RedefinirSenhaPage   }
     ];
 
   }
