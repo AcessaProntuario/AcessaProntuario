@@ -10,4 +10,101 @@
 <ion-content padding>
 Página de Cadastro de Usuário
 
+<div class="container">
+  <div class="card list-car">
+    <h5 class="card-header">Lista de usuarios</h5>
+    <div class="card-body">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Prontuario</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Sobrenome</th>
+              <th scope="col">Dt Nasc</th>
+              <th scope="col">Login</th>
+              <th scope="col">Senha</th>
+              <th scope="col">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios">
+              <td>{{usuario.id}}</td>
+              <td>{{usuario.prontuario}}</td>
+              <td>{{usuario.nome}}</td>
+              <td>{{usuario.sobrenome}}</td>
+              <td>{{usuario.dtNasc}}</td>
+              <td>{{usuario.login}}</td>
+              <td>{{usuario.senha}}</td>
+              <td>{{usuario.tipo}}</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm" (click)="editUsuario(usuario)">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteUsuario(usuario)">Deletar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+    <div class="card add-car">
+      <h5 class="card-header">Adicionar usuario</h5>
+      <div class="card-body">
+          <form id="add-form" (ngSubmit)="f.form.valid && saveUsuario(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+              <label for="prontuario">Prontuário</label>
+              <input type="text" [(ngModel)]="usuario.prontuario" id="prontuario" name="prontuario" #prontuario="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && prontuario.invalid }" placeholder="Digite o prontuario">
+              <div *ngIf="f.submitted && prontuario.invalid" class="invalid-feedback">
+                  <div *ngIf="prontuario.errors.required">Prontuário é obrigatório</div>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" [(ngModel)]="usuario.nome" id="nome" name="nome" #nome="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }" placeholder="Digite o nome">
+                <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
+                    <div *ngIf="nome.errors.required">Nome é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" [(ngModel)]="usuario.sobrenome" id="sobrenome" name="sobrenome" #sobrenome="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && sobrenome.invalid }" placeholder="Digite o sobrenome">
+                <div *ngIf="f.submitted && sobrenome.invalid" class="invalid-feedback">
+                    <div *ngIf="sobrenome.errors.required">Sobrenome é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="dtNasc">Dt Nasc</label>
+              <input type="text" [(ngModel)]="usuario.dtNasc" id="dtNasc" name="dtNasc" #dtNasc="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && dtNasc.invalid }" placeholder="Digite a dtNasc">
+              <div *ngIf="f.submitted && dtNasc.invalid" class="invalid-feedback">
+                  <div *ngIf="dtNasc.errors.required">Dt Nasc é obrigatório</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="login">Login</label>
+              <input type="text" [(ngModel)]="usuario.login" id="login" name="login" #login="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && login.invalid }" placeholder="Digite o login">
+              <div *ngIf="f.submitted && login.invalid" class="invalid-feedback">
+                  <div *ngIf="login.errors.required">Login é obrigatório</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="senha">Senha</label>
+              <input type="text" [(ngModel)]="usuario.senha" id="senha" name="senha" #senha="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && senha.invalid }" placeholder="Digite a senha">
+              <div *ngIf="f.submitted && senha.invalid" class="invalid-feedback">
+                  <div *ngIf="senha.errors.required">Senha é obrigatória</div>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <input type="text" [(ngModel)]="usuario.tipo" id="tipo" name="tipo" #tipo="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && tipo.invalid }" placeholder="Digite o tipo">
+                <div *ngIf="f.submitted && tipo.invalid" class="invalid-feedback">
+                    <div *ngIf="tipo.errors.required">Tipo é obrigatório</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-add-car">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-car" (click)="limpaForm(f)">Cancelar</button>
+          </form>
+      </div>
+    </div>
+</div>
+
 </ion-content>

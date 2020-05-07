@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Observable } from 'rxjs/Observable';
+import { ServidorProvider } from '../../providers/servidor/servidor'
 
 @IonicPage()
 @Component({
@@ -15,11 +10,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  // usuarios: Observable<any>;
+  usuarios: any;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public servidor: ServidorProvider
+    ) {
+    //this.usuarios = this.servidor.getUsuario();
+
+    this.servidor.getUsuarios()
+    .subscribe(
+      data => this.usuarios = data,
+      err => console.log(err)
+    );
+    console.log('usuario', this.usuarios)
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    console.log('ionViewDidLoad LoginPage'); 
   }
-
 }
