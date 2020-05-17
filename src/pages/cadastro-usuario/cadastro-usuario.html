@@ -50,7 +50,7 @@ Página de Cadastro de Usuário
     <div class="card add-car">
       <h5 class="card-header">Adicionar usuario</h5>
       <div class="card-body">
-          <form id="add-form" (ngSubmit)="f.form.valid && saveUsuario(f)" #f="ngForm" novalidate>
+          <form id="add-form" (ngSubmit)="f.form.valid && cadastraUsuario(f)" #f="ngForm" novalidate>
             <div class="form-group">
               <label for="prontuario">Prontuário</label>
               <input type="text" [(ngModel)]="usuario.prontuario" id="prontuario" name="prontuario" #prontuario="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && prontuario.invalid }" placeholder="Digite o prontuario">

@@ -24,39 +24,54 @@ export class CadastroUsuarioPage implements OnInit{
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroUsuarioPage');
   }
-
+  
+  //carrega uma lista de usuários ao iniciar a página
   ngOnInit(){
     this.getUsuarios();
   }
 
+  //verifica se o formulário preenchido já possui um id ou não. Se possuir é uma edição, se não, é uma inclusão
+  cadastraUsuario(form: NgForm){
+    if(this.usuario.id==null)
+      this.insertUsuario(form);
+    else
+      this.updateUsuario(form);
+  }
+
+  //atualiza um registro do banco de dados
   updateUsuario(form: NgForm) {
-    this.servidorProvider.updateUsuario(this.usuario).subscribe(() => {
+    this.servidorProvider.mantemUsuario(this.usuario, 'update').subscribe(() => {
       this.limpaForm(form);
     });
   }
 
-  saveUsuario(form: NgForm){
-    this.servidorProvider.saveUsuario(this.usuario).subscribe(() => {
+  //insere um novo registro no banco de dados
+  insertUsuario(form: NgForm){
+    this.servidorProvider.mantemUsuario(this.usuario, 'insert').subscribe(() => {
       this.limpaForm(form);
     });
   }
 
+  //traz uma lista de usuários cadastrados no banco de dados
   getUsuarios() {
     this.servidorProvider.getUsuarios().subscribe((usuarios: Usuario[]) => {
       this.usuarios = usuarios;
     });
   }
 
+  //exclui um registro no banco de dados
   deleteUsuario(usuario: Usuario) {
-    this.servidorProvider.deleteUsuario(usuario).subscribe(() => {
+    this.servidorProvider.mantemUsuario(usuario, 'delete').subscribe(() => {
       this.getUsuarios();
     });
   }
 
+  //preenche o formulário com os dados do usuário selecionado para edição
   editUsuario(usuario: Usuario) {
     this.usuario = { ...usuario };
   }
 
+  //limpa o formulário
   limpaForm(form: NgForm) {
     this.getUsuarios();
     form.resetForm();

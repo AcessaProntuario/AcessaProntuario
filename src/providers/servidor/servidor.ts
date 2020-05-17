@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable} from 'rxjs';
 import {_throw} from 'rxjs/observable/throw';
@@ -17,21 +17,14 @@ export class ServidorProvider {
     console.log('Hello ServidorProvider Provider');
   }
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  }
-
   getUsuarios(): Observable<Usuario[]>{
     return this.httpClient.get<Usuario[]>(this.url+'dadosUsuario.php').pipe(retry(2), catchError(this.handleError));
   }
 
-  getUsuarioById(id: number): Observable<Usuario>{
-    return this.httpClient.get<Usuario>(this.url+'dadosUsuario.php'+'/'+id).pipe(retry(2), catchError(this.handleError));
-  }
-
-  saveUsuario(usuario: Usuario):Observable<Usuario>{
-    
+  mantemUsuario(usuario: Usuario, acao: string):Observable<Usuario>{
     let postData = JSON.stringify({
+                              acao: acao,
+                              id: usuario.id,
                               prontuario: usuario.prontuario,
                               nome:usuario.nome, 
                               sobrenome:usuario.sobrenome, 
@@ -40,16 +33,8 @@ export class ServidorProvider {
                               senha: usuario.senha,
                               tipo: usuario.tipo,
                     })
-    this.data = this.httpClient.post<Usuario>(this.url+'insertUsuario.php', postData);
+    this.data = this.httpClient.post<Usuario>(this.url+'mantemUsuario.php', postData);
     return this.data.map(res=>res.json());
-  }
-
-  updateUsuario(usuario: Usuario): Observable<Usuario>{
-    return this.httpClient.put<Usuario>(this.url+'insertUsuario.php'+'/'+usuario.id, JSON.stringify(usuario), this.httpOptions).pipe(retry(1), catchError(this.handleError));
-  }
-
-  deleteUsuario(usuario: Usuario): Observable<Usuario>{
-    return this.httpClient.put<Usuario>(this.url+'/'+usuario.id, this.httpOptions).pipe(retry(1), catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse){
