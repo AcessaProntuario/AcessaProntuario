@@ -19,11 +19,20 @@ import { RedefinirSenhaPage } from '../pages/redefinir-senha/redefinir-senha';
 
 import { ServidorProvider } from '../providers/servidor/servidor';
 import { HttpClientModule } from '@angular/common/http';
+import { ServidorTesteProvider } from '../providers/servidor-teste/servidor-teste';
+import { TestesBdMedicoPage } from '../pages/testes-bd-medico/testes-bd-medico';
+import { TestesBdRecepPage } from '../pages/testes-bd-recep/testes-bd-recep';
+import { TestesBdPacientePage } from '../pages/testes-bd-paciente/testes-bd-paciente';
+import { TestesBdProntuarioPage } from '../pages/testes-bd-prontuario/testes-bd-prontuario';
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
+    TestesBdMedicoPage,
+    TestesBdRecepPage,
+    TestesBdPacientePage,
+    TestesBdProntuarioPage,
     CadastroMedicoPage,
     CadastroRecepPage,
     CadastroUsuarioPage,
@@ -44,6 +53,10 @@ import { HttpClientModule } from '@angular/common/http';
   entryComponents: [
     MyApp,
     LoginPage,
+    TestesBdMedicoPage,
+    TestesBdRecepPage,
+    TestesBdPacientePage,
+    TestesBdProntuarioPage,
     CadastroMedicoPage,
     CadastroRecepPage,
     CadastroUsuarioPage,
@@ -59,7 +72,8 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ServidorProvider
+    ServidorProvider,
+    ServidorTesteProvider
   ]
 })
 export class AppModule {}

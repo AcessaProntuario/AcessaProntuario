@@ -14,6 +14,7 @@ import { HomeRecepPage } from '../pages/home-recep/home-recep';
 import { HomeUserPage } from '../pages/home-user/home-user';
 import { CadastroInformePage } from '../pages/cadastro-informe/cadastro-informe';
 import { RedefinirSenhaPage } from '../pages/redefinir-senha/redefinir-senha';
+import { TestesBdMedicoPage } from '../pages/testes-bd-medico/testes-bd-medico';
 
 @Component({
   templateUrl: 'app.html'
@@ -31,6 +32,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [ 
       { title: 'Login',                     component: LoginPage            },
+      { title: 'Teste BD Medico',           component: TestesBdMedicoPage   },
       { title: 'Cadastro de Médico',        component: CadastroMedicoPage   },
       { title: 'Cadastro de Recepcionista', component: CadastroRecepPage    },
       { title: 'Cadastro de Usuário',       component: CadastroUsuarioPage  },
