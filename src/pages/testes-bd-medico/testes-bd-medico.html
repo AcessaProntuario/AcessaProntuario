@@ -62,20 +62,6 @@
         <div class="card-body">
             <form id="add-form" (ngSubmit)="f.form.valid && cadastraMedico(f)" #f="ngForm" novalidate>
               <div class="form-group">
-                <label for="login">Login</label>
-                <input type="text" [(ngModel)]="medico.login" id="login" name="login" #login="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && login.invalid }" placeholder="Digite o Login">
-                <div *ngIf="f.submitted && login.invalid" class="invalid-feedback">
-                    <div *ngIf="login.errors.required">Login é obrigatório</div>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label for="senha">Senha</label>
-                  <input type="text" [(ngModel)]="medico.senha" id="senha" name="senha" #senha="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && senha.invalid }" placeholder="Digite a Senha">
-                  <div *ngIf="f.submitted && senha.invalid" class="invalid-feedback">
-                      <div *ngIf="senha.errors.required">Senha é obrigatória</div>
-                  </div>
-              </div>
-              <div class="form-group">
                   <label for="nome">Nome</label>
                   <input type="text" [(ngModel)]="medico.nome" id="nome" name="nome" #nome="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }" placeholder="Digite o Nome">
                   <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">

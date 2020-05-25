@@ -3,7 +3,6 @@ import { ServidorTesteProvider } from '../../providers/servidor-teste/servidor-t
 import { Medico } from '../../app/Modelos/medico';
 import { NgForm } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ServidorProvider } from '../../providers/servidor/servidor';
 
 @IonicPage()
 @Component({
@@ -14,6 +13,7 @@ export class TestesBdMedicoPage {
 
   
   medico = {
+    senha: '12345678',
     tipo: 'Medico',
     ativo: 'SIM'
   } as Medico;
@@ -23,8 +23,7 @@ export class TestesBdMedicoPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
-    private servidorTesteProvider: ServidorTesteProvider,
-    private servidorProvider: ServidorProvider
+    private servidorTesteProvider: ServidorTesteProvider
     ) {
   }
 
@@ -50,7 +49,8 @@ export class TestesBdMedicoPage {
 
   //insere um novo registro no banco de dados
   insertUsuarioMedico(form: NgForm){
-    this.medico.dtCadastro = this.servidorProvider.calculaData();   
+    this.medico.dtCadastro = this.servidorTesteProvider.formataDataAtual();
+    this.medico.login = this.servidorTesteProvider.geraLogin(this.medico.nome, this.medico.sobrenome);
     this.servidorTesteProvider.mantemMedico(this.medico, 'insert', this.idUsuario).subscribe(() => {
     });
     this.buscaUltimoIdUsuario();

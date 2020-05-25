@@ -37,22 +37,6 @@ export class ServidorProvider {
     return this.data.map(res=>res.json());
   }
 
-  calculaData(){
-    let data = new Date();
-    let dia = (data.getDate()).toString();
-    let tamDia = dia.length;
-    if(tamDia==1){
-      dia='0'+dia;
-    }
-    let mes = (data.getMonth() + 1).toString();
-    let tamMes = mes.length;
-    if(tamMes==1){
-      mes='0'+mes;
-    }
-    let ano = data.getFullYear();
-    return dia + '/' + mes + '/' + ano;
-  }
-
   handleError(error: HttpErrorResponse){
     let errorMessage = '';
     if (error.error instanceof ErrorEvent){

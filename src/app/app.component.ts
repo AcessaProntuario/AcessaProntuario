@@ -15,6 +15,8 @@ import { HomeUserPage } from '../pages/home-user/home-user';
 import { CadastroInformePage } from '../pages/cadastro-informe/cadastro-informe';
 import { RedefinirSenhaPage } from '../pages/redefinir-senha/redefinir-senha';
 import { TestesBdMedicoPage } from '../pages/testes-bd-medico/testes-bd-medico';
+import { TestesBdRecepPage } from '../pages/testes-bd-recep/testes-bd-recep';
+import { TestesBdPacientePage } from '../pages/testes-bd-paciente/testes-bd-paciente';
 
 @Component({
   templateUrl: 'app.html'
@@ -33,6 +35,8 @@ export class MyApp {
     this.pages = [ 
       { title: 'Login',                     component: LoginPage            },
       { title: 'Teste BD Medico',           component: TestesBdMedicoPage   },
+      { title: 'Teste BD Recepcionista',    component: TestesBdRecepPage    },
+      { title: 'Teste BD Paciente',         component: TestesBdPacientePage },
       { title: 'Cadastro de Médico',        component: CadastroMedicoPage   },
       { title: 'Cadastro de Recepcionista', component: CadastroRecepPage    },
       { title: 'Cadastro de Usuário',       component: CadastroUsuarioPage  },

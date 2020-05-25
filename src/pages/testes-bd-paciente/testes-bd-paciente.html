@@ -1,15 +1,298 @@
-<!--
-  Generated template for the TestesBdPacientePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>testesBDPaciente</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+
+  <div class="container">
+    <div class="card list-car">
+      <h5 class="card-header">Lista de pacientes</h5>
+      <div class="card-body">
+        <table class="table"  *ngFor="let paciente of pacientes">
+            <thead>
+              <tr>
+                <th scope="col">IdPac           </th>
+                <th scope="col">IdTipo          </th>
+                <th scope="col">Login           </th>
+                <th scope="col">Senha           </th>
+                <th scope="col">numProntuario   </th>
+                <th scope="col">Nome            </th>
+                <th scope="col">Sobrenome       </th>
+                <th scope="col">DtNasc          </th>
+                <th scope="col">Sexo            </th>
+                <th scope="col">EstCivil        </th>
+                <th scope="col">DtCadastro      </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{paciente.idPac		      }}</td>
+                <td>{{paciente.idTipo		      }}</td>
+                <td>{{paciente.login		      }}</td>
+                <td>{{paciente.senha		      }}</td>
+                <td>{{paciente.numProntuario	}}</td>
+                <td>{{paciente.nome		        }}</td>
+                <td>{{paciente.sobrenome	    }}</td>
+                <td>{{paciente.dtNasc		      }}</td>
+                <td>{{paciente.sexo		        }}</td>
+                <td>{{paciente.estadoCivil	  }}</td>
+                <td>{{paciente.dtCadastro	    }}</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th scope="col">NomeMae         </th>
+                <th scope="col">NomePai         </th>
+                <th scope="col">CPF             </th>
+                <th scope="col">RG              </th>
+                <th scope="col">Telefone1       </th>
+                <th scope="col">Telefone2       </th>
+                <th scope="col">Telefone3       </th>
+                <th scope="col">E-mail          </th>
+                <th scope="col">tipoLogradouro  </th>
+                <th scope="col">endereco        </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>  
+                <td>{{paciente.nomeMae	      }}</td>
+                <td>{{paciente.nomePai	      }}</td>
+                <td>{{paciente.cpf		        }}</td>
+                <td>{{paciente.rg		          }}</td>
+                <td>{{paciente.telefone1	    }}</td>
+                <td>{{paciente.telefone2	    }}</td>
+                <td>{{paciente.telefone3	    }}</td>
+                <td>{{paciente.email		      }}</td>
+                <td>{{paciente.tipoLogradouro	}}</td>
+                <td>{{paciente.endereco	      }}</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th scope="col">numEndereco     </th>
+                <th scope="col">complEndereco   </th>
+                <th scope="col">bairro          </th>
+                <th scope="col">cep             </th>
+                <th scope="col">cidade          </th>
+                <th scope="col">estado          </th>
+                <th scope="col">tipoSanguineo   </th>
+                <th scope="col">fatorRh         </th>
+                <th scope="col">alergias        </th>
+                <th scope="col">respCadastro    </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{paciente.numEndereco	  }}</td>
+                <td>{{paciente.complEndereco	}}</td>
+                <td>{{paciente.bairro		      }}</td>
+                <td>{{paciente.cep		        }}</td>
+                <td>{{paciente.cidade		      }}</td>
+                <td>{{paciente.estado		      }}</td>
+                <td>{{paciente.tipoSanguineo	}}</td>
+                <td>{{paciente.fatorRh		    }}</td>
+                <td>{{paciente.alergias		    }}</td>
+                <td>{{paciente.respCadastro	  }}</td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-sm" (click)="editPaciente(paciente)">Editar</button>
+                  <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deletePaciente(paciente)">Deletar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  
+      <div class="card add-car">
+        <h5 class="card-header">Adicionar Paciente</h5>
+        <div class="card-body">
+            <form id="add-form" (ngSubmit)="f.form.valid && cadastraPaciente(f)" #f="ngForm" novalidate>
+              <div class="form-group">
+                <label for="numProntuario">numProntuario</label>
+                <input type="text" [(ngModel)]="paciente.numProntuario" id="numProntuario" name="numProntuario" #numProntuario="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && numProntuario.invalid }" placeholder="Digite o Número do Prontuário">
+                <div *ngIf="f.submitted && numProntuario.invalid" class="invalid-feedback">
+                    <div *ngIf="numProntuario.errors.required">Numero do Prontuário é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" [(ngModel)]="paciente.nome" id="nome" name="nome" #nome="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }" placeholder="Digite o Nome">
+                <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
+                    <div *ngIf="nome.errors.required">Nome é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" [(ngModel)]="paciente.sobrenome" id="sobrenome" name="sobrenome" #sobrenome="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && sobrenome.invalid }" placeholder="Digite o Sobrenome">
+                <div *ngIf="f.submitted && sobrenome.invalid" class="invalid-feedback">
+                    <div *ngIf="sobrenome.errors.required">Sobrenome é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="dtNasc">Data Nascimento</label>
+                <input type="text" [(ngModel)]="paciente.dtNasc" id="dtNasc" name="dtNasc" #dtNasc="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && dtNasc.invalid }" placeholder="Digite a Data de Nascimento">
+                <div *ngIf="f.submitted && dtNasc.invalid" class="invalid-feedback">
+                    <div *ngIf="dtNasc.errors.required">Data Nascimento é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="sexo">Sexo</label>
+                <input type="text" [(ngModel)]="paciente.sexo" id="sexo" name="sexo" #sexo="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && sexo.invalid }" placeholder="Digite o Sexo">
+                <div *ngIf="f.submitted && sexo.invalid" class="invalid-feedback">
+                    <div *ngIf="sexo.errors.required">Sexo é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="estadoCivil">Estado Civil</label>
+                <input type="text" [(ngModel)]="paciente.estadoCivil" id="estadoCivil" name="estadoCivil" #estadoCivil="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && estadoCivil.invalid }" placeholder="Digite o Estado Civil">
+                <div *ngIf="f.submitted && estadoCivil.invalid" class="invalid-feedback">
+                    <div *ngIf="estadoCivil.errors.required">Estado Civil é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="nomeMae">Nome da Mãe</label>
+                <input type="text" [(ngModel)]="paciente.nomeMae" id="nomeMae" name="nomeMae" #nomeMae="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nomeMae.invalid }" placeholder="Digite o Nome da Mãe">
+                <div *ngIf="f.submitted && nomeMae.invalid" class="invalid-feedback">
+                    <div *ngIf="nomeMae.errors.required">Nome da Mãe é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="nomePai">Nome da Mãe</label>
+                <input type="text" [(ngModel)]="paciente.nomePai" id="nomePai" name="nomePai" #nomePai="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nomePai.invalid }" placeholder="Digite o Nome do Pai">
+                <div *ngIf="f.submitted && nomePai.invalid" class="invalid-feedback">
+                    <div *ngIf="nomePai.errors.required">Nome do Pai é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" [(ngModel)]="paciente.cpf" id="cpf" name="cpf" #cpf="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }" placeholder="Digite o CPF">
+                <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
+                    <div *ngIf="cpf.errors.required">CPF é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="rg">RG</label>
+                <input type="text" [(ngModel)]="paciente.rg" id="rg" name="rg" #rg="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && rg.invalid }" placeholder="Digite o RG">
+                <div *ngIf="f.submitted && rg.invalid" class="invalid-feedback">
+                    <div *ngIf="rg.errors.required">RG é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="telefone1">telefone1</label>
+                <input type="text" [(ngModel)]="paciente.telefone1" id="telefone1" name="telefone1" #telefone1="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && telefone1.invalid }" placeholder="Digite o telefone1">
+                <div *ngIf="f.submitted && telefone1.invalid" class="invalid-feedback">
+                    <div *ngIf="telefone1.errors.required">telefone1 é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="telefone2">telefone2</label>
+                <input type="text" [(ngModel)]="paciente.telefone2" id="telefone2" name="telefone2" #telefone2="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && telefone2.invalid }" placeholder="Digite o telefone2">
+                <div *ngIf="f.submitted && telefone2.invalid" class="invalid-feedback">
+                    <div *ngIf="telefone2.errors.required">telefone2 é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="telefone3">telefone3</label>
+                <input type="text" [(ngModel)]="paciente.telefone3" id="telefone3" name="telefone3" #telefone3="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && telefone3.invalid }" placeholder="Digite o telefone3">
+                <div *ngIf="f.submitted && telefone3.invalid" class="invalid-feedback">
+                    <div *ngIf="telefone3.errors.required">telefone3 é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="text" [(ngModel)]="paciente.email" id="email" name="email" #email="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" placeholder="Digite o E-mail">
+                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                    <div *ngIf="email.errors.required">E-mail é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="tipoLogradouro">tipoLogradouro</label>
+                <input type="text" [(ngModel)]="paciente.tipoLogradouro" id="tipoLogradouro" name="tipoLogradouro" #tipoLogradouro="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && tipoLogradouro.invalid }" placeholder="Digite o Tipo de Logradouro">
+                <div *ngIf="f.submitted && tipoLogradouro.invalid" class="invalid-feedback">
+                    <div *ngIf="tipoLogradouro.errors.required">tipoLogradouro é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="endereco">endereco</label>
+                <input type="text" [(ngModel)]="paciente.endereco" id="endereco" name="endereco" #endereco="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && endereco.invalid }" placeholder="Digite o endereco">
+                <div *ngIf="f.submitted && endereco.invalid" class="invalid-feedback">
+                    <div *ngIf="endereco.errors.required">endereco é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="numEndereco">numEndereco</label>
+                <input type="text" [(ngModel)]="paciente.numEndereco" id="numEndereco" name="numEndereco" #numEndereco="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && numEndereco.invalid }" placeholder="Digite o Número do Endereco">
+                <div *ngIf="f.submitted && numEndereco.invalid" class="invalid-feedback">
+                    <div *ngIf="numEndereco.errors.required">numEndereco é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="complEndereco">complEndereco</label>
+                <input type="text" [(ngModel)]="paciente.complEndereco" id="complEndereco" name="complEndereco" #complEndereco="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && complEndereco.invalid }" placeholder="Digite o Complemento do Endereco">
+                <div *ngIf="f.submitted && complEndereco.invalid" class="invalid-feedback">
+                    <div *ngIf="complEndereco.errors.required">complEndereco é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="bairro">bairro</label>
+                <input type="text" [(ngModel)]="paciente.bairro" id="bairro" name="bairro" #bairro="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && bairro.invalid }" placeholder="Digite o bairro">
+                <div *ngIf="f.submitted && bairro.invalid" class="invalid-feedback">
+                    <div *ngIf="bairro.errors.required">bairro é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cep">cep</label>
+                <input type="text" [(ngModel)]="paciente.cep" id="cep" name="cep" #cep="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && cep.invalid }" placeholder="Digite o cep">
+                <div *ngIf="f.submitted && cep.invalid" class="invalid-feedback">
+                    <div *ngIf="cep.errors.required">cep é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cidade">cidade</label>
+                <input type="text" [(ngModel)]="paciente.cidade" id="cidade" name="cidade" #cidade="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && cidade.invalid }" placeholder="Digite a cidade">
+                <div *ngIf="f.submitted && cidade.invalid" class="invalid-feedback">
+                    <div *ngIf="cidade.errors.required">cidade é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="estado">estado</label>
+                <input type="text" [(ngModel)]="paciente.estado" id="estado" name="estado" #estado="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && estado.invalid }" placeholder="Digite o estado">
+                <div *ngIf="f.submitted && estado.invalid" class="invalid-feedback">
+                    <div *ngIf="estado.errors.required">estado é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="tipoSanguineo">tipoSanguineo</label>
+                <input type="text" [(ngModel)]="paciente.tipoSanguineo" id="tipoSanguineo" name="tipoSanguineo" #tipoSanguineo="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && tipoSanguineo.invalid }" placeholder="Digite o tipoSanguineo">
+                <div *ngIf="f.submitted && tipoSanguineo.invalid" class="invalid-feedback">
+                    <div *ngIf="tipoSanguineo.errors.required">tipoSanguineo é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="fatorRh">fatorRh</label>
+                <input type="text" [(ngModel)]="paciente.fatorRh" id="fatorRh" name="fatorRh" #fatorRh="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && fatorRh.invalid }" placeholder="Digite o fatorRh">
+                <div *ngIf="f.submitted && fatorRh.invalid" class="invalid-feedback">
+                    <div *ngIf="fatorRh.errors.required">fatorRh é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="alergias">alergias</label>
+                <input type="text" [(ngModel)]="paciente.alergias" id="alergias" name="alergias" #alergias="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && alergias.invalid }" placeholder="Digite as alergias">
+                <div *ngIf="f.submitted && alergias.invalid" class="invalid-feedback">
+                    <div *ngIf="alergias.errors.required">alergias é obrigatório</div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-add-car">Salvar</button>
+              <button type="reset" class="btn btn-secondary btn-add-car" (click)="limpaForm(f)">Cancelar</button>
+            </form>
+        </div>
+      </div>
+  </div>
 
 </ion-content>
