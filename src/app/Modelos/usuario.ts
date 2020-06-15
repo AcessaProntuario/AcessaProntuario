@@ -1,10 +1,13 @@
 export interface Usuario{
-    id: number;
-    prontuario?: string;
-    nome: string;
-    sobrenome: string;
-    dtNasc?: string;
-    login: string;
-    senha: string;
-    tipo: string;
+    idTipoUsu:  number;
+    login:      string;
+    senha:      string;
+    tipo:       string;
+    ativo:      string;
+    nome:       string;
+    sobrenome:  string;
+    idAdmin?:   number;
+    idPac?:     number;
+    idRecep?:   number;
+    idMed?:     number;
 }

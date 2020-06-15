@@ -24,6 +24,8 @@ import { TestesBdMedicoPage } from '../pages/testes-bd-medico/testes-bd-medico';
 import { TestesBdRecepPage } from '../pages/testes-bd-recep/testes-bd-recep';
 import { TestesBdPacientePage } from '../pages/testes-bd-paciente/testes-bd-paciente';
 import { TestesBdProntuarioPage } from '../pages/testes-bd-prontuario/testes-bd-prontuario';
+import { TestesBdInformePage } from '../pages/testes-bd-informe/testes-bd-informe';
+import { TestesBdAdminPage } from '../pages/testes-bd-admin/testes-bd-admin';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { TestesBdProntuarioPage } from '../pages/testes-bd-prontuario/testes-bd-
     TestesBdRecepPage,
     TestesBdPacientePage,
     TestesBdProntuarioPage,
+    TestesBdInformePage,
+    TestesBdAdminPage,
     CadastroMedicoPage,
     CadastroRecepPage,
     CadastroUsuarioPage,
@@ -57,6 +61,8 @@ import { TestesBdProntuarioPage } from '../pages/testes-bd-prontuario/testes-bd-
     TestesBdRecepPage,
     TestesBdPacientePage,
     TestesBdProntuarioPage,
+    TestesBdInformePage,
+    TestesBdAdminPage,
     CadastroMedicoPage,
     CadastroRecepPage,
     CadastroUsuarioPage,

@@ -18,7 +18,6 @@ export class TestesBdMedicoPage {
     ativo: 'SIM'
   } as Medico;
   medicos: Medico[];
-  idUsuario;
 
   constructor(
     public navCtrl: NavController, 
@@ -35,36 +34,39 @@ export class TestesBdMedicoPage {
   //verifica se o formulário preenchido já possui um id ou não. Se possuir é uma edição, se não, é uma inclusão
   cadastraMedico(form: NgForm){
     if(this.medico.idMed==null)
-      this.insertUsuarioMedico(form);
+      this.buscaUltimoIdUsuario(form);
     else
       this.updateMedico(form);
   }
 
   //atualiza um registro do banco de dados
   updateMedico(form: NgForm) {
-    this.servidorTesteProvider.mantemMedico(this.medico, 'update', this.idUsuario).subscribe(() => {
+    this.servidorTesteProvider.mantemMedico(this.medico, 'update').subscribe(() => {
+    });
+    this.medico.idTipoUsu = null;
+    this.limpaForm(form);
+  }
+
+  //insere um novo registro no banco de dados
+  insertUsuarioMedico(){
+    this.medico.dtCadastro = this.servidorTesteProvider.formataDataAtual();
+    this.medico.login = this.servidorTesteProvider.geraLogin(this.medico.nome, this.medico.sobrenome);
+    this.servidorTesteProvider.mantemMedico(this.medico, 'insert').subscribe(() => {
+    });
+  }
+
+  async buscaUltimoIdUsuario(form: NgForm){
+    await this.insertUsuarioMedico();
+    this.servidorTesteProvider.getUltimoIdUsuario().subscribe((result: any) => {
+      this.medico.idTipoUsu = +result.idTipoUsu; //esse + é para fazer um parse para number
+      this.insereMedico();
+      this.medico.idTipoUsu = null;
       this.limpaForm(form);
     });
   }
 
-  //insere um novo registro no banco de dados
-  insertUsuarioMedico(form: NgForm){
-    this.medico.dtCadastro = this.servidorTesteProvider.formataDataAtual();
-    this.medico.login = this.servidorTesteProvider.geraLogin(this.medico.nome, this.medico.sobrenome);
-    this.servidorTesteProvider.mantemMedico(this.medico, 'insert', this.idUsuario).subscribe(() => {
-    });
-    this.buscaUltimoIdUsuario();
-  }
-
-  buscaUltimoIdUsuario(){
-    this.servidorTesteProvider.getUltimoIdUsuario().subscribe((result: any) => {
-      this.idUsuario = +result.idTipoUsu; //esse + é para fazer um parse para number
-      this.insereMedico();
-    });
-  }
-
   insereMedico(){
-    this.servidorTesteProvider.mantemMedico(this.medico, 'insert2', this.idUsuario).subscribe(() => {
+    this.servidorTesteProvider.mantemMedico(this.medico, 'insert2').subscribe(() => {
     });
   }
 
@@ -77,7 +79,7 @@ export class TestesBdMedicoPage {
 
   //exclui um registro no banco de dados
   deleteMedico(medico: Medico) {
-    this.servidorTesteProvider.mantemMedico(medico, 'delete', this.idUsuario).subscribe(() => {
+    this.servidorTesteProvider.mantemMedico(medico, 'delete').subscribe(() => {
     });
   }
 

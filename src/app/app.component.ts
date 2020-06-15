@@ -17,6 +17,9 @@ import { RedefinirSenhaPage } from '../pages/redefinir-senha/redefinir-senha';
 import { TestesBdMedicoPage } from '../pages/testes-bd-medico/testes-bd-medico';
 import { TestesBdRecepPage } from '../pages/testes-bd-recep/testes-bd-recep';
 import { TestesBdPacientePage } from '../pages/testes-bd-paciente/testes-bd-paciente';
+import { TestesBdProntuarioPage } from '../pages/testes-bd-prontuario/testes-bd-prontuario';
+import { TestesBdInformePage } from '../pages/testes-bd-informe/testes-bd-informe';
+import { TestesBdAdminPage } from '../pages/testes-bd-admin/testes-bd-admin';
 
 @Component({
   templateUrl: 'app.html'
@@ -34,9 +37,12 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [ 
       { title: 'Login',                     component: LoginPage            },
+      { title: 'Teste BD Admin',            component: TestesBdAdminPage   },
       { title: 'Teste BD Medico',           component: TestesBdMedicoPage   },
       { title: 'Teste BD Recepcionista',    component: TestesBdRecepPage    },
       { title: 'Teste BD Paciente',         component: TestesBdPacientePage },
+      { title: 'Teste BD Prontuario',       component: TestesBdProntuarioPage },
+      { title: 'Teste BD Informe',          component: TestesBdInformePage  },
       { title: 'Cadastro de Médico',        component: CadastroMedicoPage   },
       { title: 'Cadastro de Recepcionista', component: CadastroRecepPage    },
       { title: 'Cadastro de Usuário',       component: CadastroUsuarioPage  },

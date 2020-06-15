@@ -1,15 +1,258 @@
-<!--
-  Generated template for the TestesBdProntuarioPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
-    <ion-title>testesBDProntuario</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>testesBDProntuário</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+
+  <div class="container">
+    <div class="card list-car">
+      <h5 class="card-header">Lista de Prontuários</h5>
+      <div class="card-body">
+        <table class="table"  *ngFor="let prontuario of prontuarios">
+            <thead>
+              <tr>
+                <th scope="col">idPront      </th>
+                <th scope="col">numProntPac  </th>
+                <th scope="col">idPaciente   </th>
+                <th scope="col">idade        </th>
+                <th scope="col">peso         </th>
+                <th scope="col">altura       </th>
+                <th scope="col">dtInternacao </th>
+                <th scope="col">crmResp      </th>
+                <th scope="col">ufCrmResp    </th>
+                <th scope="col">idMedResp    </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{prontuario.idPront}}</td>
+                <td>{{prontuario.numProntPac}}</td>
+                <td>{{prontuario.idPaciente}}</td>
+                <td>{{prontuario.idade}}</td>
+                <td>{{prontuario.peso}}</td>
+                <td>{{prontuario.altura}}</td>
+                <td>{{prontuario.dtInternacao}}</td>
+                <td>{{prontuario.crmResp}}</td>
+                <td>{{prontuario.ufCrmResp}}</td>
+                <td>{{prontuario.idMedResp}}</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th scope="col">dtProntuario    </th>
+                <th scope="col">hrProntuario    </th>
+                <th scope="col">dtUltimaVisita  </th>
+                <th scope="col">hrUltimaVisita  </th>
+                <th scope="col">temperatura     </th>
+                <th scope="col">pressaoSist     </th>
+                <th scope="col">pressaoDiast    </th>
+                <th scope="col">batimentosCard  </th>
+                <th scope="col">estadoSaude     </th>
+                <th scope="col">examesSolicit   </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>  
+                <td>{{prontuario.dtProntuario  }}</td>
+                <td>{{prontuario.hrProntuario  }}</td>
+                <td>{{prontuario.dtUltimaVisita}}</td>
+                <td>{{prontuario.hrUltimaVisita}}</td>
+                <td>{{prontuario.temperatura   }}</td>
+                <td>{{prontuario.pressaoSist   }}</td>
+                <td>{{prontuario.pressaoDiast  }}</td>
+                <td>{{prontuario.batimentosCard}}</td>
+                <td>{{prontuario.estadoSaude   }}</td>
+                <td>{{prontuario.examesSolicit }}</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th scope="col">remediosMinistr </th>
+                <th scope="col">previsaoAlta    </th>
+                <th scope="col">dtPrevisaoAlta  </th>
+                <th scope="col">alta            </th>
+                <th scope="col">dtAlta          </th>
+                <th scope="col">crmRespInfo     </th>
+                <th scope="col">ufCrmRespInfo   </th>
+                <th scope="col">idMedRespInfo   </th>
+                <th scope="col">dadosAdicionais </th>
+                <th scope="col">ativoPront      </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                
+                <td>{{prontuario.remediosMinistr}}</td>
+                <td>{{prontuario.previsaoAlta   }}</td>
+                <td>{{prontuario.dtPrevisaoAlta }}</td>
+                <td>{{prontuario.alta           }}</td>
+                <td>{{prontuario.dtAlta         }}</td>
+                <td>{{prontuario.crmRespInfo    }}</td>
+                <td>{{prontuario.ufCrmRespInfo  }}</td>
+                <td>{{prontuario.idMedRespInfo  }}</td>
+                <td>{{prontuario.dadosAdicionais}}</td>
+                <td>{{prontuario.ativoPront     }}</td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-sm" (click)="editProntuario(prontuario)">Editar</button>
+                  <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteProntuario(prontuario)">Deletar</button>
+                </td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  
+      <div class="card add-car">
+        <h5 class="card-header">Adicionar Prontuario</h5>
+        <div class="card-body">
+            <form id="add-form" (ngSubmit)="f.form.valid && cadastraProntuario(f)" #f="ngForm" novalidate>
+              <div class="form-group">
+                <label for="idade">Idade</label>
+                <input type="text" [(ngModel)]="prontuario.idade" id="idade" name="idade" #idade="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && idade.invalid }" placeholder="Digite a idade">
+                <div *ngIf="f.submitted && idade.invalid" class="invalid-feedback">
+                    <div *ngIf="idade.errors.required">Idade é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="peso">peso</label>
+                <input type="text" [(ngModel)]="prontuario.peso" id="peso" name="peso" #peso="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && peso.invalid }" placeholder="Digite a peso">
+                <div *ngIf="f.submitted && peso.invalid" class="invalid-feedback">
+                    <div *ngIf="peso.errors.required">peso é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="altura">altura</label>
+                <input type="text" [(ngModel)]="prontuario.altura" id="altura" name="altura" #altura="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && altura.invalid }" placeholder="Digite a altura">
+                <div *ngIf="f.submitted && altura.invalid" class="invalid-feedback">
+                    <div *ngIf="altura.errors.required">altura é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="dtInternacao">dtInternacao</label>
+                <input type="text" [(ngModel)]="prontuario.dtInternacao" id="dtInternacao" name="dtInternacao" #dtInternacao="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && dtInternacao.invalid }" placeholder="Digite a dtInternacao">
+                <div *ngIf="f.submitted && dtInternacao.invalid" class="invalid-feedback">
+                    <div *ngIf="dtInternacao.errors.required">dtInternacao é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="dtUltimaVisita">dtUltimaVisita</label>
+                <input type="text" [(ngModel)]="prontuario.dtUltimaVisita" id="dtUltimaVisita" name="dtUltimaVisita" #dtUltimaVisita="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && dtUltimaVisita.invalid }" placeholder="Digite a dtUltimaVisita">
+                <div *ngIf="f.submitted && dtUltimaVisita.invalid" class="invalid-feedback">
+                    <div *ngIf="dtUltimaVisita.errors.required">dtUltimaVisita é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="hrUltimaVisita">hrUltimaVisita</label>
+                <input type="text" [(ngModel)]="prontuario.hrUltimaVisita" id="hrUltimaVisita" name="hrUltimaVisita" #hrUltimaVisita="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && hrUltimaVisita.invalid }" placeholder="Digite a hrUltimaVisita">
+                <div *ngIf="f.submitted && hrUltimaVisita.invalid" class="invalid-feedback">
+                    <div *ngIf="hrUltimaVisita.errors.required">hrUltimaVisita é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="temperatura">temperatura</label>
+                <input type="text" [(ngModel)]="prontuario.temperatura" id="temperatura" name="temperatura" #temperatura="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && temperatura.invalid }" placeholder="Digite a temperatura">
+                <div *ngIf="f.submitted && temperatura.invalid" class="invalid-feedback">
+                    <div *ngIf="temperatura.errors.required">temperatura é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="pressaoSist">pressaoSist</label>
+                <input type="text" [(ngModel)]="prontuario.pressaoSist" id="pressaoSist" name="pressaoSist" #pressaoSist="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && pressaoSist.invalid }" placeholder="Digite a pressaoSist">
+                <div *ngIf="f.submitted && pressaoSist.invalid" class="invalid-feedback">
+                    <div *ngIf="pressaoSist.errors.required">pressaoSist é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="pressaoDiast">pressaoDiast</label>
+                <input type="text" [(ngModel)]="prontuario.pressaoDiast" id="pressaoDiast" name="pressaoDiast" #pressaoDiast="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && pressaoDiast.invalid }" placeholder="Digite a pressaoDiast">
+                <div *ngIf="f.submitted && pressaoDiast.invalid" class="invalid-feedback">
+                    <div *ngIf="pressaoDiast.errors.required">pressaoDiast é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="batimentosCard">batimentosCard</label>
+                <input type="text" [(ngModel)]="prontuario.batimentosCard" id="batimentosCard" name="batimentosCard" #batimentosCard="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && batimentosCard.invalid }" placeholder="Digite a batimentosCard">
+                <div *ngIf="f.submitted && batimentosCard.invalid" class="invalid-feedback">
+                    <div *ngIf="batimentosCard.errors.required">batimentosCard é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="estadoSaude">estadoSaude</label>
+                <input type="text" [(ngModel)]="prontuario.estadoSaude" id="estadoSaude" name="estadoSaude" #estadoSaude="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && estadoSaude.invalid }" placeholder="Digite a estadoSaude">
+                <div *ngIf="f.submitted && estadoSaude.invalid" class="invalid-feedback">
+                    <div *ngIf="estadoSaude.errors.required">estadoSaude é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="examesSolicit">examesSolicit</label>
+                <input type="text" [(ngModel)]="prontuario.examesSolicit" id="examesSolicit" name="examesSolicit" #examesSolicit="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && examesSolicit.invalid }" placeholder="Digite a examesSolicit">
+                <div *ngIf="f.submitted && examesSolicit.invalid" class="invalid-feedback">
+                    <div *ngIf="examesSolicit.errors.required">examesSolicit é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="remediosMinistr">remediosMinistr</label>
+                <input type="text" [(ngModel)]="prontuario.remediosMinistr" id="remediosMinistr" name="remediosMinistr" #remediosMinistr="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && remediosMinistr.invalid }" placeholder="Digite a remediosMinistr">
+                <div *ngIf="f.submitted && remediosMinistr.invalid" class="invalid-feedback">
+                    <div *ngIf="remediosMinistr.errors.required">remediosMinistr é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="previsaoAlta">previsaoAlta</label>
+                <input type="text" [(ngModel)]="prontuario.previsaoAlta" id="previsaoAlta" name="previsaoAlta" #previsaoAlta="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && previsaoAlta.invalid }" placeholder="Digite a previsaoAlta">
+                <div *ngIf="f.submitted && previsaoAlta.invalid" class="invalid-feedback">
+                    <div *ngIf="previsaoAlta.errors.required">previsaoAlta é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="dtPrevisaoAlta">dtPrevisaoAlta</label>
+                <input type="text" [(ngModel)]="prontuario.dtPrevisaoAlta" id="dtPrevisaoAlta" name="dtPrevisaoAlta" #dtPrevisaoAlta="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && dtPrevisaoAlta.invalid }" placeholder="Digite a dtPrevisaoAlta">
+                <div *ngIf="f.submitted && dtPrevisaoAlta.invalid" class="invalid-feedback">
+                    <div *ngIf="dtPrevisaoAlta.errors.required">dtPrevisaoAlta é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="alta">alta</label>
+                <input type="text" [(ngModel)]="prontuario.alta" id="alta" name="alta" #alta="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && alta.invalid }" placeholder="Digite a alta">
+                <div *ngIf="f.submitted && alta.invalid" class="invalid-feedback">
+                    <div *ngIf="alta.errors.required">alta é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="dtAlta">dtAlta</label>
+                <input type="text" [(ngModel)]="prontuario.dtAlta" id="dtAlta" name="dtAlta" #dtAlta="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && dtAlta.invalid }" placeholder="Digite a dtAlta">
+                <div *ngIf="f.submitted && dtAlta.invalid" class="invalid-feedback">
+                    <div *ngIf="dtAlta.errors.required">dtAlta é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="dadosAdicionais">dadosAdicionais</label>
+                <input type="text" [(ngModel)]="prontuario.dadosAdicionais" id="dadosAdicionais" name="dadosAdicionais" #dadosAdicionais="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && dadosAdicionais.invalid }" placeholder="Digite a dadosAdicionais">
+                <div *ngIf="f.submitted && dadosAdicionais.invalid" class="invalid-feedback">
+                    <div *ngIf="dadosAdicionais.errors.required">dadosAdicionais é obrigatória</div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-add-car">Salvar</button>
+              <button type="reset" class="btn btn-secondary btn-add-car" (click)="limpaForm(f)">Cancelar</button>
+            </form>
+        </div>
+      </div>
+  </div>
 
 </ion-content>

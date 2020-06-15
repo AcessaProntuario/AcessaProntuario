@@ -17,7 +17,6 @@ export class TestesBdPacientePage {
     ativo: 'SIM'
   } as Paciente;
   pacientes: Paciente[];
-  idUsuario;
   idRecep=1;  // o valor está fixado, mas deve ser alterado para pegar o idRecep do recepcionista que estiver cadastrando o paciente
 
   constructor(
@@ -35,37 +34,40 @@ export class TestesBdPacientePage {
   //verifica se o formulário preenchido já possui um id ou não. Se possuir é uma edição, se não, é uma inclusão
   cadastraPaciente(form: NgForm){
     if(this.paciente.idPac==null)
-      this.insertUsuarioPaciente(form);
+      this.buscaUltimoIdUsuario(form);
     else
       this.updatePaciente(form);
   }
 
   //atualiza um registro do banco de dados
   updatePaciente(form: NgForm) {
-    this.servidorTesteProvider.mantemPaciente(this.paciente, 'update', this.idUsuario, this.idRecep).subscribe(() => {
-      this.limpaForm(form);
+    this.servidorTesteProvider.mantemPaciente(this.paciente, 'update', this.idRecep).subscribe(() => {
     });
+    this.paciente.idTipoUsu = null;
+    this.limpaForm(form);
   }
 
   //insere um novo registro no banco de dados
-  insertUsuarioPaciente(form: NgForm){
+  insertUsuarioPaciente(){
     this.paciente.dtCadastro = this.servidorTesteProvider.formataDataAtual();
     this.paciente.login = this.servidorTesteProvider.geraLogin(this.paciente.nome, this.paciente.sobrenome);
     this.paciente.senha = this.servidorTesteProvider.geraRandom();
-    this.servidorTesteProvider.mantemPaciente(this.paciente, 'insert', this.idUsuario, this.idRecep).subscribe(() => {
+    this.servidorTesteProvider.mantemPaciente(this.paciente, 'insert', this.idRecep).subscribe(() => {
     });
-    this.buscaUltimoIdUsuario();
   }
 
-  buscaUltimoIdUsuario(){
+  async buscaUltimoIdUsuario(form: NgForm){
+    await this.insertUsuarioPaciente();
     this.servidorTesteProvider.getUltimoIdUsuario().subscribe((result: any) => {
-      this.idUsuario = +result.idTipoUsu; //esse + é para fazer um parse para number
+      this.paciente.idTipoUsu = +result.idTipoUsu; //esse + é para fazer um parse para number
       this.inserePaciente();
+      this.paciente.idTipoUsu = null;
+      this.limpaForm(form)
     });
   }
 
   inserePaciente(){
-    this.servidorTesteProvider.mantemPaciente(this.paciente, 'insert2', this.idUsuario, this.idRecep).subscribe(() => {
+    this.servidorTesteProvider.mantemPaciente(this.paciente, 'insert2', this.idRecep).subscribe(() => {
     });
   }
 
@@ -78,7 +80,7 @@ export class TestesBdPacientePage {
 
   //exclui um registro no banco de dados
   deletePaciente(paciente: Paciente) {
-    this.servidorTesteProvider.mantemPaciente(paciente, 'delete', this.idUsuario, this.idRecep).subscribe(() => {
+    this.servidorTesteProvider.mantemPaciente(paciente, 'delete', this.idRecep).subscribe(() => {
     });
   }
 

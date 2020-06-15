@@ -18,7 +18,6 @@ export class TestesBdRecepPage {
     ativo: 'SIM'
   } as Recepcionista;
   recepcionistas: Recepcionista[];
-  idUsuario;
 
   constructor(
     public navCtrl: NavController, 
@@ -35,36 +34,39 @@ export class TestesBdRecepPage {
   //verifica se o formulário preenchido já possui um id ou não. Se possuir é uma edição, se não, é uma inclusão
   cadastraRecep(form: NgForm){
     if(this.recepcionista.idRecep==null)
-      this.insertUsuarioRecep(form);
+      this.buscaUltimoIdUsuario(form);
     else
       this.updateRecep(form);
   }
 
   //atualiza um registro do banco de dados
-  updateRecep(form: NgForm) {
-    this.servidorTesteProvider.mantemRecep(this.recepcionista, 'update', this.idUsuario).subscribe(() => {
+  async updateRecep(form: NgForm) {
+    await this.servidorTesteProvider.mantemRecep(this.recepcionista, 'update').subscribe(() => {
+    });
+    this.recepcionista.idTipoUsu = null;
+    this.limpaForm(form);
+  }
+
+  //insere um novo registro no banco de dados
+  insertUsuarioRecep(){
+    this.recepcionista.dtCadastro = this.servidorTesteProvider.formataDataAtual();
+    this.recepcionista.login = this.servidorTesteProvider.geraLogin(this.recepcionista.nome, this.recepcionista.sobrenome);
+    this.servidorTesteProvider.mantemRecep(this.recepcionista, 'insert').subscribe(() => {
+    });
+  }
+
+  async buscaUltimoIdUsuario(form: NgForm){
+    await this.insertUsuarioRecep();
+    this.servidorTesteProvider.getUltimoIdUsuario().subscribe((result: any) => {
+      this.recepcionista.idTipoUsu = +result.idTipoUsu; //esse + é para fazer um parse para number
+      this.insereRecep();
+      this.recepcionista.idTipoUsu = null;
       this.limpaForm(form);
     });
   }
 
-  //insere um novo registro no banco de dados
-  insertUsuarioRecep(form: NgForm){
-    this.recepcionista.dtCadastro = this.servidorTesteProvider.formataDataAtual();
-    this.recepcionista.login = this.servidorTesteProvider.geraLogin(this.recepcionista.nome, this.recepcionista.sobrenome);
-    this.servidorTesteProvider.mantemRecep(this.recepcionista, 'insert', this.idUsuario).subscribe(() => {
-    });
-    this.buscaUltimoIdUsuario();
-  }
-
-  buscaUltimoIdUsuario(){
-    this.servidorTesteProvider.getUltimoIdUsuario().subscribe((result: any) => {
-      this.idUsuario = +result.idTipoUsu; //esse + é para fazer um parse para number
-      this.insereRecep();
-    });
-  }
-
   insereRecep(){
-    this.servidorTesteProvider.mantemRecep(this.recepcionista, 'insert2', this.idUsuario).subscribe(() => {
+    this.servidorTesteProvider.mantemRecep(this.recepcionista, 'insert2').subscribe(() => {
     });
   }
 
@@ -77,7 +79,7 @@ export class TestesBdRecepPage {
 
   //exclui um registro no banco de dados
   deleteRecep(recepcionista: Recepcionista) {
-    this.servidorTesteProvider.mantemRecep(recepcionista, 'delete', this.idUsuario).subscribe(() => {
+    this.servidorTesteProvider.mantemRecep(recepcionista, 'delete').subscribe(() => {
     });
   }
 

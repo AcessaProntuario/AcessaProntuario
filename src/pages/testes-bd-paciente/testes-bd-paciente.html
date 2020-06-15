@@ -105,6 +105,16 @@
                 </td>
               </tr>
             </tbody>
+            <thead>
+              <tr>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+              </tr>
+            </tbody>
           </table>
       </div>
     </div>
@@ -163,7 +173,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="nomePai">Nome da Mãe</label>
+                <label for="nomePai">Nome do Pai</label>
                 <input type="text" [(ngModel)]="paciente.nomePai" id="nomePai" name="nomePai" #nomePai="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nomePai.invalid }" placeholder="Digite o Nome do Pai">
                 <div *ngIf="f.submitted && nomePai.invalid" class="invalid-feedback">
                     <div *ngIf="nomePai.errors.required">Nome do Pai é obrigatório</div>

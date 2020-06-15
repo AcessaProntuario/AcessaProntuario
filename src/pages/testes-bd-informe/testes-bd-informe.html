@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>testesBDInforme</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <div class="container">
+    <div class="card add-car">
+      <h5 class="card-header">INFORME SOMENTE PODE SER VISUALIZADO. PARA INCLUIR, EDITAR OU EXCLUIR DEVE-SE FAZER A AÇÃO NO PRONTUÁRIO</h5>
+    </div>
+    <br/>
+    <div class="card list-car">
+      <h5 class="card-header">Lista de Informes</h5>
+      <div class="card-body">
+        <table class="table"  *ngFor="let informe of informes">
+            <thead>
+              <tr>
+                <th scope="col">idInf      </th>
+                <th scope="col">idProntInf      </th>
+                <th scope="col">numProntPacInf  </th>
+                <th scope="col">idPacienteInf   </th>
+                <th scope="col">idadeInf        </th>
+                <th scope="col">pesoInf         </th>
+                <th scope="col">alturaInf       </th>
+                <th scope="col">dtInternacaoInf </th>
+                <th scope="col">crmRespInf      </th>
+                <th scope="col">ufCrmRespInf    </th>
+                <th scope="col">idMedRespInf    </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{informe.idInf}}           </td>
+                <td>{{informe.idProntInf}}      </td>
+                <td>{{informe.numProntPacInf}}  </td>
+                <td>{{informe.idPacienteInf}}   </td>
+                <td>{{informe.idadeInf}}        </td>
+                <td>{{informe.pesoInf}}         </td>
+                <td>{{informe.alturaInf}}       </td>
+                <td>{{informe.dtInternacaoInf}} </td>
+                <td>{{informe.crmRespInf}}      </td>
+                <td>{{informe.ufCrmRespInf}}    </td>
+                <td>{{informe.idMedRespInf}}    </td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th scope="col">dtProntuarioInf    </th>
+                <th scope="col">hrProntuarioInf    </th>
+                <th scope="col">dtUltimaVisitaInf  </th>
+                <th scope="col">hrUltimaVisitaInf  </th>
+                <th scope="col">temperaturaInf     </th>
+                <th scope="col">pressaoSistInf     </th>
+                <th scope="col">pressaoDiastInf    </th>
+                <th scope="col">batimentosCardInf  </th>
+                <th scope="col">estadoSaudeInf     </th>
+                <th scope="col">examesSolicitInf   </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>  
+                <td>{{informe.dtProntuarioInf  }}</td>
+                <td>{{informe.hrProntuarioInf  }}</td>
+                <td>{{informe.dtUltimaVisitaInf}}</td>
+                <td>{{informe.hrUltimaVisitaInf}}</td>
+                <td>{{informe.temperaturaInf   }}</td>
+                <td>{{informe.pressaoSistInf   }}</td>
+                <td>{{informe.pressaoDiastInf  }}</td>
+                <td>{{informe.batimentosCardInf}}</td>
+                <td>{{informe.estadoSaudeInf   }}</td>
+                <td>{{informe.examesSolicitInf }}</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th scope="col">remediosMinistrInf </th>
+                <th scope="col">previsaoAltaInf    </th>
+                <th scope="col">dtPrevisaoAltaInf  </th>
+                <th scope="col">altaInf            </th>
+                <th scope="col">dtAltaInf          </th>
+                <th scope="col">crmRespInfoInf     </th>
+                <th scope="col">ufCrmRespInfoInf   </th>
+                <th scope="col">idMedRespInfoInf   </th>
+                <th scope="col">dadosAdicionaisInf </th>
+                <th scope="col">ativoInf           </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                
+                <td>{{informe.remediosMinistrInf}}</td>
+                <td>{{informe.previsaoAltaInf   }}</td>
+                <td>{{informe.dtPrevisaoAltaInf }}</td>
+                <td>{{informe.altaInf           }}</td>
+                <td>{{informe.dtAltaInf         }}</td>
+                <td>{{informe.crmRespInfoInf    }}</td>
+                <td>{{informe.ufCrmRespInfoInf  }}</td>
+                <td>{{informe.idMedRespInfoInf  }}</td>
+                <td>{{informe.dadosAdicionaisInf}}</td>
+                <td>{{informe.ativoInf          }}</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

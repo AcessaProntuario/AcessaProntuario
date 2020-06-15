@@ -15,10 +15,19 @@
     <ion-item *ngFor="let usuario of usuarios">
       <ion-card>
         <ion-card-header>
-          <h2>{{usuario.nome}}</h2>
+          <h2>{{usuario.login}}</h2>
         </ion-card-header>
         <ion-card-content>
-          <p>{{usuario.sobrenome}}</p>
+          <p>ID: {{usuario.idTipoUsu}}</p>
+          <p>Senha: {{usuario.senha}}</p>
+          <p>Tipo: {{usuario.tipo}}</p>
+          <p>Ativo: {{usuario.ativo}}</p>
+          <p>Nome: {{usuario.nome}}</p>
+          <p>Sobrenome: {{usuario.sobrenome}}</p>
+          <p *ngIf="usuario.idAdmin">idAdmin: {{usuario.idAdmin}}</p>
+          <p *ngIf="usuario.idMed">idMed: {{usuario.idMed}}</p>
+          <p *ngIf="usuario.idPac">idPac: {{usuario.idPac}}</p>
+          <p *ngIf="usuario.idRecep">idRecep: {{usuario.idRecep}}</p>
         </ion-card-content>
       </ion-card>
     </ion-item>
