@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
-import { ServidorTesteProvider } from '../../providers/servidor-teste/servidor-teste';
-import { Medico } from '../../app/Modelos/medico';
+import { ServidorTesteProvider } from '../../../providers/servidor-teste/servidor-teste';
+import { Medico } from '../../../app/Modelos/medico';
 import { NgForm } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 

@@ -20,12 +20,12 @@ import { RedefinirSenhaPage } from '../pages/redefinir-senha/redefinir-senha';
 import { ServidorProvider } from '../providers/servidor/servidor';
 import { HttpClientModule } from '@angular/common/http';
 import { ServidorTesteProvider } from '../providers/servidor-teste/servidor-teste';
-import { TestesBdMedicoPage } from '../pages/testes-bd-medico/testes-bd-medico';
-import { TestesBdRecepPage } from '../pages/testes-bd-recep/testes-bd-recep';
-import { TestesBdPacientePage } from '../pages/testes-bd-paciente/testes-bd-paciente';
-import { TestesBdProntuarioPage } from '../pages/testes-bd-prontuario/testes-bd-prontuario';
-import { TestesBdInformePage } from '../pages/testes-bd-informe/testes-bd-informe';
-import { TestesBdAdminPage } from '../pages/testes-bd-admin/testes-bd-admin';
+import { TestesBdMedicoPage } from '../pages/testes-cadastro/testes-bd-medico/testes-bd-medico';
+import { TestesBdRecepPage } from '../pages/testes-cadastro/testes-bd-recep/testes-bd-recep';
+import { TestesBdPacientePage } from '../pages/testes-cadastro/testes-bd-paciente/testes-bd-paciente';
+import { TestesBdProntuarioPage } from '../pages/testes-cadastro/testes-bd-prontuario/testes-bd-prontuario';
+import { TestesBdInformePage } from '../pages/testes-cadastro/testes-bd-informe/testes-bd-informe';
+import { TestesBdAdminPage } from '../pages/testes-cadastro/testes-bd-admin/testes-bd-admin';
 
 @NgModule({
   declarations: [

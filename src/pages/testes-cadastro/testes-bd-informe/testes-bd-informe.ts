@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
-import { ServidorTesteProvider } from '../../providers/servidor-teste/servidor-teste';
+import { ServidorTesteProvider } from '../../../providers/servidor-teste/servidor-teste';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Informe } from '../../app/Modelos/informe';
+import { Informe } from '../../../app/Modelos/informe';
 
 @IonicPage()
 @Component({

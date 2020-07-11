@@ -9,6 +9,7 @@ import { Paciente } from '../../app/Modelos/paciente';
 import { Prontuario } from '../../app/Modelos/prontuario';
 import { Informe } from '../../app/Modelos/informe';
 import { Administrador } from '../../app/Modelos/administrador';
+import { TipoUsuario } from '../../app/Modelos/tipoUsuario';
 
 @Injectable()
 export class ServidorTesteProvider {
@@ -26,6 +27,10 @@ export class ServidorTesteProvider {
 
   getUltimoIdProntuario(): Observable<any>{
     return this.httpClient.get<any>(this.url+'ultimoIdProntuarioTeste.php').pipe(retry(2), catchError(this.handleError));
+  }
+
+  getTipoUsuario(): Observable<TipoUsuario[]>{
+    return this.httpClient.get<TipoUsuario[]>(this.url+'dadosTipoUsuarioTeste.php').pipe(retry(2), catchError(this.handleError));
   }
 
   formataDataAtual(){
