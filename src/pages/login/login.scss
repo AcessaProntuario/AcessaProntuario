@@ -1,3 +1,40 @@
-page-login {
 
+
+
+.backgroundApp{
+  background-color: $white;
+  font-family: $fontFamily;
+
+  .area-logo{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    .imagemLogo{
+      width: 50%;
+      margin-bottom: 6%;
+    }
+  }
+
+  .imagemLogin{
+    margin-top: 10%;
+    width: 70%;
+    margin: auto;
+  }
+
+  .listaInputLogin{
+    margin-top: 15%;
+
+    .inputLogin{
+      border: 1px solid $LightGray;
+      margin-top: 3%;
+    }
+  }
+
+  .inputLogin{
+    margin-top: 30px;
+  }
 }
+
+
+

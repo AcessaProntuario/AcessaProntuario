@@ -14,3 +14,99 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+//Variaveis
+$textColor: #707070;
+$LightGray: #cdcdcd;
+$purple: #312980;
+$pink: #EF5B66;
+$yellow: #FEA200;
+$lightBlue: #8ADEF2;
+$lightPutple: #E7E7F8;
+$white: #ffffff;
+$fontFamily: 'Roboto', sans-serif;
+
+body{
+  font-family: $fontFamily;
+}
+
+.Icon{
+  color: $LightGray;
+  font-size: 2em;
+}
+
+.buttonStyle{
+  background-color: $yellow;
+  color: $white;
+  font-weight: 700;
+  width: 100%;
+  align-items: center;
+  font-size: 1.3em;
+  padding: 0;
+  display: flex;
+  height: 50px;
+
+  span{
+    display: block;
+    background: rgba(0, 0, 0, 0.08);
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+  }
+
+  .btn-Icon{
+    color: $white;
+    font-weight: 700;
+  }
+
+  strong{
+    flex: 1;
+    text-align: center;
+  }
+
+  &:hover{
+    background-color: $purple;
+    color: $white;
+  }
+}
+
+.form-control{
+  padding: 2em 1.5em;
+  font-size: .8em;
+  color: $textColor;
+
+  &::placeholder {
+    color: $textColor;
+    opacity: 0.6;
+    transition: all 260ms ease-in-out;
+ }
+
+  &:focus{
+    border-color: $yellow;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+
+    &::placeholder {
+      font-size: 0;
+      transition: all 260ms ease-in-out;
+   }
+  }
+}
+
+.input-group{
+  .input-group-prepend{
+    .input-group-text{
+      background: transparent;
+      border-right-color: transparent;
+    }
+  }
+
+  input{
+    border-left-color: transparent;
+  }
+}

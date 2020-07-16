@@ -7,11 +7,33 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  Página de Login
+<ion-content padding class='backgroundApp'>
+
+  <div class="container">
+    <div class="area-logo">
+      <img class="imagemLogo" src="../../assets/imgs/logo.svg" alt="Logo Acessa Prontuario"/>
+    </div>
+    <div class="imagemLogin">
+      <img src="../../assets/imgs/ImagemLoginNova.svg" alt="Imagem Login">
+    </div>
+  </div>
 
 
-  <ion-list>
+ <!-- <ion-list class="listaInputLogin">
+      <ion-item class="inputLogin">
+          <ion-label class="lbl-Login">
+            <ion-icon name="contact" class="Icon"></ion-icon>
+          </ion-label>
+          <ion-input placeholder="Login" type="text" [(ngModel)] = "usuario.login"></ion-input>
+        </ion-item>
+
+    <ion-item class="inputLogin">
+      <ion-label class="lbl-Senha">
+        <ion-icon name="lock" class="Icon"></ion-icon>
+      </ion-label>
+      <ion-input placeholder="Senha" type="password" [(ngModel)] = "usuario.senha"></ion-input>
+    </ion-item>
+
     <ion-item *ngFor="let usuario of usuarios">
       <ion-card>
         <ion-card-header>
@@ -32,6 +54,85 @@
       </ion-card>
     </ion-item>
   </ion-list>
-  
+
+   <button class="bnt-Login" (click) = login(usuario)>
+     Acessar
+     <ion-icon name="log-in-outline" class="btn-Icon"></ion-icon>
+   </button>-->
+
+   <!--<form id="login-form" (ngSubmit)="f.form.valid && login(f)" #f="ngForm" novalidate>
+      <div class="form-group">
+          <label for="login">login</label>
+          <input type="text" [(ngModel)]="usuario.login" id="login" name="login" #login="ngModel" required class="form-control"  placeholder="Digite o login">
+
+        </div>
+
+      <div class="form-group">
+          <label for="senha">senha</label>
+          <input type="password" [(ngModel)]="usuario.senha" id="senha" name="senha" #login="ngModel" required class="form-control" placeholder="Digite o senha">
+
+      </div>
+      <button class="bnt-Login" type="submit">
+          Acessar
+          <ion-icon name="log-in-outline" class="btn-Icon"></ion-icon>
+        </button>
+
+   </form>-->
+
+
+   <form id="add-form" (ngSubmit)="f.form.valid && loginUsuario(f)" #f="ngForm" novalidate>
+    <div class="form-group">
+
+
+
+        <div class="input-group mb-3 inputLogin">
+            <div class="input-group-prepend">
+              <label class="input-group-text">
+                  <ion-icon name="contact" class="Icon"></ion-icon>
+              </label>
+            </div>
+            <input type="text" [(ngModel)]="tipoUsuario.login" id="login" name="login" #login="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && login.invalid }" placeholder="Login">
+            <div *ngIf="f.submitted && login.invalid" class="invalid-feedback">
+              <div *ngIf="login.errors.required">Nome é obrigatório</div>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text">
+                  <ion-icon name="lock" class="Icon"></ion-icon>
+              </label>
+            </div>
+            <input type="password" [(ngModel)]="tipoUsuario.senha" id="senha" name="senha" #senha="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && senha.invalid }" placeholder="Senha">
+            <div *ngIf="f.submitted && senha.invalid" class="invalid-feedback">
+              <div *ngIf="senha.errors.required">Sobrenome é obrigatório</div>
+            </div>
+        </div>
+
+      <!--<label for="login">Nome</label>
+      <input type="text" [(ngModel)]="tipoUsuario.login" id="login" name="login" #login="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && login.invalid }" placeholder="Digite o Nome">
+      <div *ngIf="f.submitted && login.invalid" class="invalid-feedback">
+          <div *ngIf="login.errors.required">Nome é obrigatório</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="senha">Sobrenome</label>
+      <input type="password" [(ngModel)]="tipoUsuario.senha" id="senha" name="senha" #senha="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && senha.invalid }" placeholder="Digite o Sobrenome">
+      <div *ngIf="f.submitted && senha.invalid" class="invalid-feedback">
+          <div *ngIf="senha.errors.required">Sobrenome é obrigatório</div>
+      </div>-->
+    </div>
+
+    <button type="submit" class="btn buttonStyle">
+      <span>
+          <ion-icon name="log-in" class="btn-Icon"></ion-icon>
+      </span>
+        <strong>Login</strong>
+    </button>
+
+
+
+  </form>
+
 
 </ion-content>
