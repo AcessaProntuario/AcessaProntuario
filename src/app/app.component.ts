@@ -29,30 +29,30 @@ export class MyApp {
 
   rootPage: any = LoginPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{icon: string, title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
-    this.pages = [ 
-      { title: 'Login',                     component: LoginPage            },
-      { title: 'Teste BD Admin',            component: TestesBdAdminPage   },
-      { title: 'Teste BD Medico',           component: TestesBdMedicoPage   },
-      { title: 'Teste BD Recepcionista',    component: TestesBdRecepPage    },
-      { title: 'Teste BD Paciente',         component: TestesBdPacientePage },
-      { title: 'Teste BD Prontuario',       component: TestesBdProntuarioPage },
-      { title: 'Teste BD Informe',          component: TestesBdInformePage  },
-      { title: 'Cadastro de Médico',        component: CadastroMedicoPage   },
-      { title: 'Cadastro de Recepcionista', component: CadastroRecepPage    },
-      { title: 'Cadastro de Usuário',       component: CadastroUsuarioPage  },
-      { title: 'HomeMedico',                component: HomeMedicoPage       },
-      { title: 'HomeAdm',                   component: HomeAdmPage          },
-      { title: 'HomeRecepcionista',         component: HomeRecepPage        },
-      { title: 'HomeUser',                  component: HomeUserPage         },
-      { title: 'Cadastro de Informe',       component: CadastroInformePage  },
-      { title: 'Detalhe do Informe',        component: DetalheInformePage   },
-      { title: 'Redefinir Senha',           component: RedefinirSenhaPage   }
+    this.pages = [
+      { icon: 'person-add', title: 'Login',                     component: LoginPage            },
+      { icon: 'person-add', title: 'Teste BD Admin',            component: TestesBdAdminPage   },
+      { icon: 'person-add', title: 'Teste BD Medico',           component: TestesBdMedicoPage   },
+      { icon: 'person-add', title: 'Teste BD Recepcionista',    component: TestesBdRecepPage    },
+      { icon: 'person-add', title: 'Teste BD Paciente',         component: TestesBdPacientePage },
+      { icon: 'person-add', title: 'Teste BD Prontuario',       component: TestesBdProntuarioPage },
+      { icon: 'person-add', title: 'Teste BD Informe',          component: TestesBdInformePage  },
+      { icon: 'person-add', title: 'Cadastro de Médico',        component: CadastroMedicoPage   },
+      { icon: 'person-add', title: 'Cadastro de Recepcionista', component: CadastroRecepPage    },
+      { icon: 'person-add', title: 'Cadastro de Usuário',       component: CadastroUsuarioPage  },
+      { icon: 'person-add', title: 'HomeMedico',                component: HomeMedicoPage       },
+      { icon: 'person-add', title: 'HomeAdm',                   component: HomeAdmPage          },
+      { icon: 'person-add', title: 'HomeRecepcionista',         component: HomeRecepPage        },
+      { icon: 'person-add', title: 'HomeUser',                  component: HomeUserPage         },
+      { icon: 'person-add', title: 'Cadastro de Informe',       component: CadastroInformePage  },
+      { icon: 'person-add', title: 'Detalhe do Informe',        component: DetalheInformePage   },
+      { icon: 'person-add', title: 'Redefinir Senha',           component: RedefinirSenhaPage   }
     ];
 
   }

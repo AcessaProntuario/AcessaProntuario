@@ -20,8 +20,10 @@
 $textColor: #707070;
 $LightGray: #cdcdcd;
 $purple: #312980;
+$purpleOpacity: rgba(50, 42, 128, .2);
 $pink: #EF5B66;
 $yellow: #FEA200;
+$yellowOpacity: rgba(254,162, 0, .2);
 $lightBlue: #8ADEF2;
 $lightPutple: #E7E7F8;
 $white: #ffffff;
@@ -29,6 +31,30 @@ $fontFamily: 'Roboto', sans-serif;
 
 body{
   font-family: $fontFamily;
+}
+
+/*======== Estilização Menu ==========*/
+
+.iconMenu{
+  background-color: $purpleOpacity;
+  border-radius: 50%;
+  color: $purple;
+  font-size: 1em;
+  padding: .3em;
+  margin-right: .5em;
+}
+
+.itemMenuTitle{
+  color: $textColor;
+}
+
+.toolbar-background-md{
+  background-color: $purple;
+}
+
+
+.toolbar-title-md{
+  color: $white;
 }
 
 .Icon{
